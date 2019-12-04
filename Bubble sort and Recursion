@@ -1,0 +1,68 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package jonathanadvanced;
+
+/**
+ *
+ * @author jon
+ */
+
+import java.util.Arrays; 
+import java.util.Scanner;
+import java.util.*;
+
+public class JonathanAdvanced {
+
+// A function to implement bubble sort 
+    static void bubbleSort(List<Integer> j, int base) { 
+        if (base == 1) 
+            return;  
+        for (int i=0; i<base-1; i++) 
+            if (j.get(i) > j.get(i+1)) 
+            {  
+                int temp = j.get(i); 
+                j.set(i, j.get(i+1)); 
+                j.set(i+1, temp); 
+            } 
+       
+        // Largest element is fixed, 
+        // recur for remaining array 
+        bubbleSort(j, base-1); 
+    } 
+      
+    // Driver Method 
+    public static void main(String[] args) 
+    { 
+        Scanner input = new Scanner(System.in);
+        int num;
+        
+        List<Integer> list = new ArrayList<>(); 
+        
+        System.out.println("This program indexes all the marks you receive in a course."
+        +" Once finished inputting marks, enter a non interger value.");
+        while (true){
+            try{
+                num = input.nextInt();
+                if (num<=100 && num>=0){
+                    list.add(num);
+                }
+                else{
+                    System.out.println("This isn't a valid mark.");
+                }
+            }
+            catch (Exception e){
+                break;
+            }
+        }
+        //System.out.println(list);
+       
+        bubbleSort(list, list.size()); 
+          
+        System.out.println("Your marks are: "); 
+        System.out.println(list); 
+    } 
+    
+}
